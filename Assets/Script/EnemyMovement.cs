@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    Transform target;
-    //[SerializeField] Rigidbody enemyRb;
-    float findTime = 1f;
-    Transform movePosi;
-    public bool isPlayerIn;
-    public Enemy _enemy;
+    [SerializeField] Transform target;
+    [SerializeField] Transform movePosi;
 
-    [Header("--")]
-    float speed = 4f;
-    float sight = 5f;
+    [SerializeField] float findTime = 1f;
+    [SerializeField] bool isPlayerIn;
+    [SerializeField] Enemy _enemy;
+
+    [Header("해당 Enemy마다 다름")]
+    [SerializeField] float speed;
+    [SerializeField] float sight;
+    [SerializeField] float attackRange;
 
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         _enemy = GetComponent<Enemy>();
+        
+        // 해당 게임오브젝트에 붙어있는 enemy 스크립트 (상속되어있음) 요소를 들고옴
+        speed = _enemy.getSpeed();
+        sight = _enemy.getSight();
+        attackRange = _enemy.getAttackRange();
 
         movePosi = target; //초기에는 target으로 지정
         StartCoroutine("checkPosi"); //findTime 마다 실행
@@ -38,7 +44,7 @@ public class EnemyMovement : MonoBehaviour
     {
         // enemy가 player를 인식하는 범위
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, sight);
+        Gizmos.DrawWireSphere(transform.position, sight); //현재 위치에서 , 몬스터 sight만큼 (몬스터 마다 다름)
     }
 
     //Player찾기
