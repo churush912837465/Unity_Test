@@ -52,7 +52,11 @@ public class Enemy :MonoBehaviour
     //플레이어 감지
     protected void SearchingPlayer()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, attackRange); //시작 위치 , 범위
+        float x = transform.position.x;
+        float y = transform.position.y;
+        Vector2 vector2 = new Vector2(x, y);
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(vector2, attackRange); //시작 위치 , 범위
         // sight크기의 원 만큼의 Sphere안의 Collider추출
         // OverlapSphere()사용
 

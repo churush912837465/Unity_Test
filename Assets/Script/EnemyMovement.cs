@@ -20,7 +20,7 @@ public class EnemyMovement : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         _enemy = GetComponent<Enemy>();
-        
+
         // 해당 게임오브젝트에 붙어있는 enemy 스크립트 (상속되어있음) 요소를 들고옴
         speed = _enemy.getSpeed();
         sight = _enemy.getSight();
@@ -32,7 +32,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        SearchingPlayer(); //플레이어 감지 
+        SearchingToMove(); //플레이어 감지 
         if (isPlayerIn) //플레이어가 감지되면
         {
             moveEnemy();
@@ -48,9 +48,14 @@ public class EnemyMovement : MonoBehaviour
     }
 
     //Player찾기
-    public void SearchingPlayer()
+    public void SearchingToMove()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, sight); //시작 위치 , 범위
+
+        float x = transform.position.x;
+        float y  = transform.position.y;
+        Vector2 vector2 = new Vector2(x, y);
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(vector2, sight); //시작 위치 , 범위
         // sight크기의 원 만큼의 Sphere안의 Collider추출
         // OverlapSphere()사용
 
