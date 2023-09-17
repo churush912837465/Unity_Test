@@ -587,7 +587,7 @@ MonoBehaviour:
   sight: 0
   damage: 1
   isPlayerin: 0
-  isDelay: 0
+  isDelay: 1
   player: {fileID: 0}
 --- !u!50 &1593769789
 Rigidbody2D:
