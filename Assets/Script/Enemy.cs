@@ -12,16 +12,24 @@ public class Enemy :MonoBehaviour
     [SerializeField] protected float speed;
     [SerializeField] protected float sight;
     [SerializeField] protected int damage = 1; // 데미지는 1로 고정
+    [SerializeField] protected float waitforDie;
 
     [SerializeField] protected bool isPlayerin;
     [SerializeField] protected bool isDelay;
+    [SerializeField] protected bool isEnemyDie;
 
     [SerializeField] protected Player player;
+    [SerializeField] protected int pHp;
+    [SerializeField] protected float pDamage;
 
+    [SerializeField] protected Animator ani;
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         //Player 태그가 붙은 게임오브젝트의 Player스크립트 들고오기
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        pDamage = 1f;
+        pHp = 5;
+
     }
 
     // 프로퍼티
@@ -34,7 +42,20 @@ public class Enemy :MonoBehaviour
     //플레이어에게 데미지를 주는
     protected void getDamage() 
     {
-        player.playerHp -= damage;
+        pHp -= damage;
+    }
+
+    // Enemy가 데미지 입는
+    protected void enemyHit() 
+    {
+        hp -= pDamage; 
+    }
+
+    // 죽었을때 : 죽는애니메이션 실행 ,  게임오브젝트 삭제
+    protected void isDie() 
+    {
+        if (hp < 0)
+            isEnemyDie = true;
     }
 
     //플레이어 attack 최종
