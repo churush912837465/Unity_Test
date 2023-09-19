@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3881055257498209187}
   - component: {fileID: 3413310390056880515}
-  - component: {fileID: 5534818467746935035}
   - component: {fileID: 129341314307011350}
+  - component: {fileID: 5534818467746935035}
   - component: {fileID: 5184701955752212184}
   - component: {fileID: 6912356728456053434}
   - component: {fileID: 1826777173170435372}
@@ -89,6 +89,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &129341314307011350
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509836903630577863}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &5534818467746935035
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,33 +161,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6875, y: 0.375}
   m_EdgeRadius: 0
---- !u!50 &129341314307011350
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2509836903630577863}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!95 &5184701955752212184
 Animator:
   serializedVersion: 5
@@ -225,6 +225,7 @@ MonoBehaviour:
   findTime: 1
   isPlayerIn: 0
   _enemy: {fileID: 0}
+  isFilpped: 0
   speed: 0
   sight: 0
   attackRange: 0

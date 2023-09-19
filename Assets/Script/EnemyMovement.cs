@@ -10,11 +10,14 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float findTime = 1f;
     [SerializeField] bool isPlayerIn;
     [SerializeField] Enemy _enemy;
+    //[SerializeField] Transform fireposi;
 
     [Header("해당 Enemy마다 다름")]
     [SerializeField] float speed;
     [SerializeField] float sight;
     [SerializeField] float attackRange;
+    [SerializeField] bool isFilpped; // 회전하면 true, 아니면 false
+    //[SerializeField] bool ifFirePosiFilpped; //회전에 따라 firePosi 옮기기
 
     void Start()
     {
@@ -26,7 +29,9 @@ public class EnemyMovement : MonoBehaviour
         sight = _enemy.getSight();
         attackRange = _enemy.getAttackRange();
 
-        movePosi = target; //초기에는 target으로 지정
+        movePosi = target; //초기에는 target으로 지정   
+        isFilpped = false;
+        //ifFirePosiFilpped = false;
         StartCoroutine("checkPosi"); //findTime 마다 실행
     }
 
@@ -36,7 +41,10 @@ public class EnemyMovement : MonoBehaviour
         if (isPlayerIn) //플레이어가 감지되면
         {
             moveEnemy();
+            lookAtPlayer();
         }
+        //rotateFirePosi();
+
     }
 
     // 범위 표현
@@ -46,6 +54,41 @@ public class EnemyMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, sight); //현재 위치에서 , 몬스터 sight만큼 (몬스터 마다 다름)
     }
+
+
+    // 플레이어 위치 따라 180도 뒤집기
+    public void lookAtPlayer() 
+    {
+        if (transform.position.x < target.position.x && isFilpped ) //몬스터 --  플레이어 
+        {
+            transform.Rotate(0f, 180f, 0f);
+            isFilpped = false;
+        }
+        if (transform.position.x > target.position.x && !isFilpped) //플레이어 -- 몬스터
+        {
+            transform.Rotate(0f, 180f, 0f);
+            isFilpped = true;
+        }
+    }
+
+
+    // 플레이어 위치 따라 총알 발사 posi 돌리기
+    /*
+    public void rotateFirePosi()
+    {
+        if (transform.position.x < target.position.x && ifFirePosiFilpped) //몬스터 --  플레이어 
+        {
+            fireposi.Rotate(0f, 180f, 0f);
+            ifFirePosiFilpped = false;
+        }
+        if (transform.position.x > target.position.x && !ifFirePosiFilpped) //플레이어 -- 몬스터
+        {
+            fireposi.Rotate(0f, 180f, 0f);
+            ifFirePosiFilpped = true;
+        }
+    }
+    */
+
 
     //Player찾기
     public void SearchingToMove()

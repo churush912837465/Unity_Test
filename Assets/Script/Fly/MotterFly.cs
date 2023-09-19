@@ -23,7 +23,6 @@ public class MotterFly : Enemy
         waitforDie = 0.5f;
         isPlayerin = false;
         isDelay = false;
-        isEnemyDie = false;
 
         motterDie = false;
     }
@@ -45,7 +44,7 @@ public class MotterFly : Enemy
         
     void sameChildMethod()
     {
-        SearchingPlayer(); //Enemy상위에 있음
+        playerInAttackRange(); //Enemy상위에 있음
         attackPlayer();
         isDie(); //hp가 0이하인지 검사 , isEnemyDie를 true로
         if (isEnemyDie)
