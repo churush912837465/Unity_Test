@@ -22,6 +22,7 @@ public class EnemyMove : MonoBehaviour
 
     void Update()
     {
+        speed = enemy.getSpeed(); //스피드 실시간으로 받아오기
         isIn = enemy.getIsPlayerinSight(); //범위 안에 들어왔는지 체크
         movePosi = enemy.getMovePosi(); //움직일 포지션 -> enemy클래스에서 검사한 movePosi의 위치
         if (isIn)
@@ -38,7 +39,7 @@ public class EnemyMove : MonoBehaviour
     // 범위보기
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, sight);
     }
 }

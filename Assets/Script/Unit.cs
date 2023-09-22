@@ -8,8 +8,8 @@ public class Unit : MonoBehaviour
 
     [SerializeField] protected float hp; // 체력
     [SerializeField] protected float moveSpeed; //이동 속도
+    [SerializeField] protected float attackDelay; //공격 속도
 
-    protected float attackDelay; //공격 속도
     protected float attackRange; //공격 사거리
     protected float attackDamage; // 공격 데미지
     protected float tearSpeed; // 투사체 속도

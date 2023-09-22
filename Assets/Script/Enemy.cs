@@ -14,16 +14,20 @@ public class Enemy : Unit
 
     [SerializeField] protected float sight;
     [SerializeField] protected float findTime;
-    [SerializeField] protected float waitDieSecond = 0.15f;
+    [SerializeField] protected float waitDieSecond ;
+    [SerializeField] protected float geneTime; // 생성 시간 : 0으로 초기화
+    [SerializeField] protected int geneObjCount; // 현재 생성한 카운터 : 0으로 초기화
 
     [SerializeField] protected bool isPlayerinSight;
     [SerializeField] protected bool isEnemyDie;
+    [SerializeField] protected bool isEnemyAttack;
 
     // 하위 스크립트에서 공통적으로 실행되야 하는
     protected void initialize()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         player = target.GetComponent<Player>();
+
 
         movePosi = target; // 움직일 위치를 초기설정
         StartCoroutine("checkPosi"); //findTime 마다 실행
@@ -45,7 +49,7 @@ public class Enemy : Unit
     // 몬스터가 피격
     public void hitEnemy() 
     {
-        hp -= player.playerAttack;
+        hp -= 1f;
     }
 
     //몬스터 hp검사
@@ -57,14 +61,10 @@ public class Enemy : Unit
             return false;
     }
 
-    //Die 애니메이션 
+    // Die 했을 때
     protected void deadAction()
     {
         ani.SetTrigger("isDie"); //공통 Tirgger 파라미터 Die
-    }
-    //죽는 이벤트에서 실행
-    protected void destroyObj()
-    {
         Destroy(gameObject, waitDieSecond);
     }
 
@@ -113,12 +113,10 @@ public class Enemy : Unit
     //일정시간마다 움직일 posi 구하기
     IEnumerator checkPosi()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(findTime);
-            movePosi = target; //움직여야할 posi는 findTIme마다 target의 위치를 가져옴
-            Debug.Log(movePosi.position);
-        }
+        yield return new WaitForSeconds(findTime);
+        movePosi = target; //움직여야할 posi는 findTIme마다 target의 위치를 가져옴
+        //Debug.Log(movePosi.position);
+
     }
 
 }

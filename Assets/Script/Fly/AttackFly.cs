@@ -11,8 +11,9 @@ public class AttackFly : Enemy
 
         hp = 5f;
         moveSpeed = 3f;
-        sight = 5f;
+        sight = 3f;
         findTime = 7f;
+        waitDieSecond = 0.1f;
         isPlayerinSight = false;
         ani = GetComponent<Animator>();
     }
@@ -26,7 +27,6 @@ public class AttackFly : Enemy
         if (isEnemyDie)
         {
             deadAction(); //애니메이션 실행
-            destroyObj();
         }
     }
 
