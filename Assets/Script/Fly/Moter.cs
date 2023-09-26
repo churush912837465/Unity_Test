@@ -19,7 +19,6 @@ public class Moter : Enemy
         moveSpeed = 3f;
         sight = 3f;
         findTime = 7f;
-        waitDieSecond = 0.3f;
         geneTime = 0; // 持失 段 
         geneObjCount = 0; // 置企 持失葵
 
