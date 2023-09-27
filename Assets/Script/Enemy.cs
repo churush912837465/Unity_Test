@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] protected float sight; // 시야 범위
     [SerializeField] protected float findTime; // 플레이어 찾는 쿨타임
-    [SerializeField] protected float waitDieSecond = 1f ; // 죽기전 wait
+    [SerializeField] protected float waitDieSecond = 0.7f ; // 죽기전 wait
 
     [SerializeField] protected float hp; // 체력
     [SerializeField] protected float moveSpeed; //이동 속도
@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
     // Die 했을 때
     protected void deadAction()
     {
-        ani.SetTrigger("isDie"); //공통 Tirgger 파라미터 Die
+        ani.SetBool("isDie" , true); //공통 Tirgger 파라미터 Die
         Destroy(gameObject, waitDieSecond);
     }
  

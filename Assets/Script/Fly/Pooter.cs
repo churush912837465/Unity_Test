@@ -18,7 +18,7 @@ public class Pooter : Enemy
         moveSpeed = 3f;
         sight = 8f;
         findTime = 7f;
-        bulletSpeed = 2f; // ÃÑ¾Ë ¹ß»ç
+        bulletSpeed = 5f; // ÃÑ¾Ë ¹ß»ç
         isPlayerinSight = false;
         isEnemyAttack = false;
 
