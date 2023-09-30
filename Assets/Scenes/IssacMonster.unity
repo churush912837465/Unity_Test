@@ -425,11 +425,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47cc9888b50a1a4687d1318bb2ba4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mState: 0
   enemy: {fileID: 0}
   sight: 0
   speed: 0
   isIn: 0
   movePosi: {fileID: 0}
+  x: 0
+  y: 0
+  xRan: 0
+  yRan: 0
+  randRange: 0
+  fTime: 0
 --- !u!114 &509586302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,11 +754,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47cc9888b50a1a4687d1318bb2ba4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mState: 0
   enemy: {fileID: 0}
   sight: 0
   speed: 0
   isIn: 0
   movePosi: {fileID: 0}
+  x: 0
+  y: 0
+  xRan: 0
+  yRan: 0
+  randRange: 0
+  fTime: 0
 --- !u!114 &756415927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +838,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
 --- !u!50 &756415929
 Rigidbody2D:
@@ -1308,11 +1322,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47cc9888b50a1a4687d1318bb2ba4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mState: 0
   enemy: {fileID: 0}
   sight: 0
   speed: 0
   isIn: 0
   movePosi: {fileID: 0}
+  x: 0
+  y: 0
+  xRan: 0
+  yRan: 0
+  randRange: 0
+  fTime: 0
 --- !u!114 &1979535320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1326,7 +1347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  tearPrefab: {fileID: 2995196769638532838, guid: a92bb9bb7ab812a498e3cae97ff3ebc0, type: 3}
+  tearPrefab: {fileID: 5791871672278751382, guid: 80025f51643fddd4793c3a7ceb32fb6d, type: 3}
   target: {fileID: 0}
   movePosi: {fileID: 0}
   ani: {fileID: 0}

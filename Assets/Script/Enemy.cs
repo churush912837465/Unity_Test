@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Enemy")]
     [SerializeField] Player player;
     [SerializeField] protected GameObject tearPrefab;
 
@@ -34,7 +35,6 @@ public class Enemy : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         player = target.GetComponent<Player>();
-
 
         movePosi = target; // 움직일 위치를 초기설정
         StartCoroutine("checkPosi"); //findTime 마다 실행

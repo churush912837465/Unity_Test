@@ -38,12 +38,23 @@ public class Bullet : MonoBehaviour
         //ÃÑ¾Ë ¿òÁ÷ÀÓ
         transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
 
-        isReadyDestroy = isReachDestination();
+        isReadyDestroy = isReachDestination(); // destination¿¡ µµÂøÇÏ¸é true
         if (isReadyDestroy) 
         {
-            animator.SetTrigger("isDestory");
+            animator.SetBool("isDestory" , true);
             Destroy(gameObject , wait);
         }
+    }
+
+
+    // destinationÀ§Ä¡¿¡ µµ´Þ (<) ÇÏ¸é ÆøÆÈ ¾Ö´Ï¸ÞÀÌ¼Ç
+    // ÇÃ·¹ÀÌ¾î¶û ´ê¾Æµµ ÆøÆÈ
+    bool isReachDestination()
+    {
+        betDistance = Vector3.Distance(transform.position, destination);
+        if (betDistance < 0.05f)
+            return true;
+        return false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -60,14 +71,5 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    // destinationÀ§Ä¡¿¡ µµ´Þ (<) ÇÏ¸é ÆøÆÈ ¾Ö´Ï¸ÞÀÌ¼Ç
-    // ÇÃ·¹ÀÌ¾î¶û ´ê¾Æµµ ÆøÆÈ
-    bool isReachDestination() 
-    {
-        betDistance = Vector3.Distance(transform.position, destination);
-        if (betDistance < 0.05f)
-            return true;
-        return false;
-    }
     
 }
